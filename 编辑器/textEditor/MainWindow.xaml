@@ -1,0 +1,174 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Name="window1" Height="450" Width="800">
+    <DockPanel LastChildFill="False" Margin="0,0,0.333,-5.333">
+        <!--快捷菜单-->
+        <DockPanel.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="剪切" Command="Cut" InputGestureText="Ctrl+X"/>
+                <MenuItem Header="复制" Command="Copy" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="粘贴" Command="Paste" InputGestureText="Ctrl+V"/>
+                <MenuItem Header="撤销" Command="Undo" InputGestureText="Ctrl+Z"/>
+                <MenuItem Header="恢复"  Command="Redo" InputGestureText="Ctrl+Y"/>
+
+
+            </ContextMenu>
+        </DockPanel.ContextMenu>
+
+        <Menu DockPanel.Dock="Top" Background="#FFA2C6FF">
+            <MenuItem Header="文件（_F）">
+                <MenuItem Header="打开（_O）" Name="Open_MenuItem" InputGestureText="Ctrl+O" Click="Open_MenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="open.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator></Separator>
+
+                <MenuItem Header="保存（_S）" Name="Save_MenuItem" InputGestureText="Ctrl+S" Click="Save_MenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="save.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="另存为（_A）" Name="ASave_MenuItem" InputGestureText="F12" Click="ASave_MenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="lingcun.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="新建（_N）" Name="Nem_MenuItem" InputGestureText="Ctrl+N" Click="Nem_MenuItem_Click" KeyDown="Nem_MenuItem_KeyDown"/>
+                <Separator></Separator>
+                <MenuItem Header="退出（_X）" Click="End_MenuItem_Click" KeyDown="End_MenuItem_KeyDown">
+                    <MenuItem.Icon>
+                        <Image Source="tuichu.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="编辑（_E）">
+                <MenuItem Header="撤销" Command="Undo" InputGestureText="Ctrl+Z">
+                    <MenuItem.Icon>
+                        <Image Source="chexiao.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="恢复"  Command="Redo" InputGestureText="Ctrl+Y">
+                    <MenuItem.Icon>
+                        <Image Source="renew.png"/>
+                    </MenuItem.Icon>
+
+                </MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="全选" Command="SelectAll" InputGestureText="Ctrl+A">
+                </MenuItem>
+                <Separator></Separator>
+
+                <MenuItem Header="剪切" Command="Cut" InputGestureText="Ctrl+X" >
+                    <MenuItem.Icon>
+                        <Image Source="cut.png"/>
+                    </MenuItem.Icon>
+
+                </MenuItem>
+                <MenuItem Header="复制" Command="Copy" InputGestureText="Ctrl+C">
+                    <MenuItem.Icon>
+                        <Image Source="copy.png"/>
+                    </MenuItem.Icon>
+
+                </MenuItem>
+                <MenuItem Header="粘贴" Command="Paste" InputGestureText="Ctrl+V">
+                    <MenuItem.Icon>
+                        <Image Source="paste.png"/>
+                    </MenuItem.Icon>
+
+                </MenuItem>
+
+            </MenuItem>
+            <MenuItem Header="帮助|关于…" Click="MenuItem_Click"/>
+
+            <MenuItem Header="视图（_V）"/>
+            <MenuItem Header="查找（_I）"/>
+            <MenuItem Header="格式（_O）"/>
+            <MenuItem Header="工具（_T）"/>
+            <MenuItem Header="表格（_A）"/>
+            <MenuItem Header="窗口（_W）"/>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" Height="28" Margin="0,0,0.333,0" Background="#FFA2C6FF">
+
+            <!--以下为按钮集合-->
+            <Button Width="30" Height="30" Command="Cut" ToolTip="保存" Click="Save_MenuItem_Click">
+                <Image Source="save.png"/>
+            </Button>
+
+            <Button Width="30" Height="30" Command="Cut" ToolTip="剪贴">
+                <Image Source="cut.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="Copy" ToolTip="复制">
+                <Image Source="copy.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="Paste" ToolTip="粘贴">
+                <Image Source="paste.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="Redo" ToolTip="撤销">
+                <Image Source="chexiao.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="Undo" ToolTip="恢复">
+                <Image Source="renew.png"/>
+            </Button>
+            <ComboBox x:Name="combobox1" Margin="0,1,0,0" Width="76" IsEditable="True" MaxDropDownHeight="100" SelectionChanged="combobox1_SelectionChanged" Loaded="combobox1_Loaded" VerticalAlignment="Top"/>
+            <Button Width="30" Height="30" Command="IncreaseFontSize" ToolTip="字体颜色"  Click="combobox3_Loaded">
+                <Image Source="color.png"/>
+            </Button>
+
+            <ComboBox x:Name="combobox3" Margin="0,1,0,0" Width="42" IsEditable="True"  MaxDropDownHeight="100" SelectionChanged="combobox3_SelectionChanged" Loaded="combobox3_Loaded"  VerticalAlignment="Top"/>
+
+            <Button Width="30" Height="30" Command="IncreaseFontSize" ToolTip="字符加宽">
+                <Image Source="zizeng.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="DecreaseFontSize" ToolTip="字符减小">
+                <Image Source="zijian.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="ToggleBold" ToolTip="加粗">
+                <Image Source="jiacu.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="ToggleItalic" ToolTip="斜倾">
+                <Image Source="xieti.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="ToggleUnderline" ToolTip="下划线">
+                <Image Source="xiahua.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="AlignLeft" ToolTip="左对齐">
+                <Image Source="left.png"/>
+            </Button>
+
+            <Button Width="30" Height="30" Command="AlignCenter" ToolTip="居中">
+                <Image Source="centre.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="AlignRight" ToolTip="右对齐">
+                <Image Source="right.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="AlignJustify" ToolTip="两端对齐">
+                <Image Source="two.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="IncreaseIndentation" ToolTip="增加缩进 ">
+                <Image Source="zengsuojin.png"/>
+            </Button>
+            <Button Width="30" Height="30" Command="DecreaseIndentation" ToolTip="减小缩进 ">
+                <Image Source="jiansuojin.png"/>
+            </Button>
+
+        </ToolBar>
+
+        <StatusBar x:Name="statusBar1" DockPanel.Dock="Bottom" Height="23" VerticalAlignment="Bottom" Background="#FFC2BEBE">
+
+            <TextBlock x:Name="textblock2"   Height="21" Width="376" Text="TextBlock2" RenderTransformOrigin="1.5,0.773"/>
+
+        </StatusBar>
+
+        <RichTextBox Name="textbox1" AcceptsReturn="True" Margin="0,0,0,0.333" Width="793"/>
+
+    </DockPanel>
+
+</Window>
